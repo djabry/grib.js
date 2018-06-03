@@ -1,6 +1,6 @@
 {
   "name": "@djabry/grib.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "GRIB2 parser",
   "license": "MIT",
   "main": "index.js",
