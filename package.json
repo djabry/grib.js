@@ -1,5 +1,5 @@
 {
-  "name": "grib",
+  "name": "@djabry/grib",
   "version": "0.0.1",
   "description": "GRIB2 parser",
   "license": "MIT",

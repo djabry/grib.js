@@ -1,12 +1,12 @@
-var assert = require('assert');
-var grib = require('../index');
-var jBinary = require('jbinary');
-var files = require('./lib/fixtures').files;
+const assert = require('assert');
+const grib = require('../index');
+const jBinary = require('jbinary');
+const files = require('./lib/fixtures').files;
 
 describe('sample file gfs.grb', function() {
-  var msgs = null;
+    let msgs = null;
 
-  beforeEach(function(done) {
+    beforeEach(function(done) {
     msgs = null;
     jBinary.loadData(files['gfs.grb'].url, function(err, data) {
       if(err) return done(err);
@@ -21,10 +21,10 @@ describe('sample file gfs.grb', function() {
   it('should have 308 records', function() { assert.strictEqual(msgs.length, 308); });
 
   it('should have one or two fields per record', function() {
-    var msg;
-    for(var idx in msgs) {
+      let msg;
+      for(const idx in msgs) {
       msg = msgs[idx];
-      assert.ok((msg.fields.length == 1) || (msg.fields.length == 2));
+      assert.ok((msg.fields.length === 1) || (msg.fields.length === 2));
     }
   });
 });
