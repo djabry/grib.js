@@ -1,14 +1,14 @@
-const gribParse = require('./lib/parser');
-const tables = require('./lib/tables');
-const jBinary = require('jbinary');
+var gribParse = require('./lib/parser');
+var tables = require('./lib/tables');
+var jBinary = require('jbinary');
 
-for(const tableName in tables.tables) {
+for(var tableName in tables.tables) {
   exports[tableName] = tables.tables[tableName];
 }
 
 exports.readData = function(data, cb) {
-    let msgs;
-    const dataView = new jBinary(data).view;
+    var msgs;
+    var dataView = new jBinary(data).view;
 
     // Write the contents of the buffer catching any parse errors
   try {
