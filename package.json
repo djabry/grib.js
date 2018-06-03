@@ -9,9 +9,8 @@
     "url": "git://github.com/rjw57/grib.js.git"
   },
   "author": {
-    "name": "Rich Wareham",
-    "email": "rich@richwareham.com",
-    "url": "http://richwareham.com"
+    "name": "Daniel Jabry",
+    "email": "djabry@gmail.com"
   },
   "dependencies": {
     "jbinary": "2.1.3"
@@ -30,6 +29,7 @@
     "socket.io": "2.1.1"
   },
   "scripts": {
-    "test": "mocha -R dot && karma start config/karma.conf.js --single-run --browsers Firefox,Chrome"
+    "test": "mocha -R dot && karma start config/karma.conf.js --single-run --browsers Firefox,Chrome",
+    "deploy": "npm version patch -m \"Bumped version to %s [ci skip]\" && npm publish --access public && git push && git push --tags"
   }
 }
