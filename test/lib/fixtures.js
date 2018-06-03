@@ -1,7 +1,7 @@
-const grib = require('../../index');
+var grib = require('../../index');
 
 // A fairly dirty way to determine if this is running under node or in the browser
-const underNode = !!(require('fs').readFile);
+var underNode = !!(require('fs').readFile);
 
 // count is null if file should not be parse-able, otherwise the number of sections
 exports.files = {
@@ -39,7 +39,7 @@ exports.files = {
 };
 
 // Set URL appropriately for fileName
-for(const fileName in exports.files) {
+for(var fileName in exports.files) {
   exports.files[fileName].url =
     `${underNode ? '' : '/base/'}samples/${fileName}`;
 }

@@ -1,15 +1,15 @@
-const assert = require('assert');
-const jBinary = require('jbinary');
-const files = require('./lib/fixtures').files;
-const grib = require('../index');
+var assert = require('assert');
+var jBinary = require('jbinary');
+var files = require('./lib/fixtures').files;
+var grib = require('../index');
 
-const makeTests = function (fileName) {
+var makeTests = function (fileName) {
     return function () {
-        let fileData, fileSpec = files[fileName];
-        let parseErr, msgs;
+        var fileData, fileSpec = files[fileName];
+        var parseErr, msgs;
 
         before(function (done) {
-            const url = fileSpec.url;
+            var url = fileSpec.url;
             jBinary.loadData(fileSpec.url, function (err, data) {
                 if (err) return done(err);
                 fileData = data;
@@ -47,7 +47,7 @@ const makeTests = function (fileName) {
 
         if (fileSpec.referenceTime) {
             it('should have a reference time of ' + fileSpec.referenceTime.toString(), function (done) {
-                for (const idx in msgs) {
+                for (var idx in msgs) {
                     assert.strictEqual(msgs[idx].referenceTime.getTime(), fileSpec.referenceTime.getTime());
                 }
                 done();
@@ -56,7 +56,7 @@ const makeTests = function (fileName) {
 
         if (fileSpec.referenceTimeSignificance) {
             it('should have a reference time significance of ' + fileSpec.referenceTimeSignificance.name, function (done) {
-                for (const idx in msgs) {
+                for (var idx in msgs) {
                     assert.strictEqual(msgs[idx].referenceTimeSignificance, fileSpec.referenceTimeSignificance);
                 }
                 done();
@@ -65,7 +65,7 @@ const makeTests = function (fileName) {
     };
 };
 
-for(const fileName in files) {
-    const fileSpec = files[fileName];
+for(var fileName in files) {
+    var fileSpec = files[fileName];
     describe(`parsing fixture ${fileName}`, makeTests(fileName));
 }

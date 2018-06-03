@@ -2,10 +2,10 @@
 
 'use strict';
 
-const program = require('commander');
-const fs = require('fs');
-const jBinary = require('jbinary');
-const grib = require('./index');
+var program = require('commander');
+var fs = require('fs');
+var jBinary = require('jbinary');
+var grib = require('./index');
 
 program
 .version('0.0.1')
