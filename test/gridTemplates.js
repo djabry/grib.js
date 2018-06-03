@@ -1,9 +1,9 @@
-const assert = require('assert');
-const grib = require('../index');
-const files = require('./lib/fixtures').files;
+var assert = require('assert');
+var grib = require('../index');
+var files = require('./lib/fixtures').files;
 
 describe('grid template', function() {
-    let msgs = null;
+    var msgs = null;
 
     describe('of gfs.grb', function() {
     before(function(done) {
@@ -16,10 +16,10 @@ describe('grid template', function() {
     });
 
     it('should be lat/lng', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.templateNumber, 0);
           assert.ok(field.grid.definition.earthShape);
@@ -28,10 +28,10 @@ describe('grid template', function() {
     });
 
     it('should start at lat/lng = 0/90', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.definition.la1, 90);
           assert.strictEqual(field.grid.definition.lo1, 0);
@@ -51,10 +51,10 @@ describe('grid template', function() {
     });
 
     it('should be mercator', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.templateNumber, 10);
         }
@@ -62,10 +62,10 @@ describe('grid template', function() {
     });
 
     it('should have 75936 points', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.definition.ni * field.grid.definition.nj, 75936);
         }
@@ -84,10 +84,10 @@ describe('grid template', function() {
     });
 
     it('should be polar stereographic', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.templateNumber, 20);
         }
@@ -95,10 +95,10 @@ describe('grid template', function() {
     });
 
     it('should have 2385 points', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.definition.nx * field.grid.definition.ny, 2385);
         }
@@ -117,10 +117,10 @@ describe('grid template', function() {
     });
 
     it('should be Lambert conformal', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.templateNumber, 30);
         }
@@ -128,10 +128,10 @@ describe('grid template', function() {
     });
 
     it('should have 739297 points', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.definition.nx * field.grid.definition.ny, 739297);
         }
@@ -150,10 +150,10 @@ describe('grid template', function() {
     });
 
     it('should be Gaussian latitude/longitude', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.templateNumber, 40);
         }
@@ -187,10 +187,10 @@ describe('grid template', function() {
     });
 
     it('should be Space view perspective or orthographic', function() {
-        let msg, field;
-        for(const m_idx in msgs) {
+        var msg, field;
+        for(var m_idx in msgs) {
         msg = msgs[m_idx];
-        for(const f_idx in msg.fields) {
+        for(var f_idx in msg.fields) {
           field = msg.fields[f_idx];
           assert.strictEqual(field.grid.templateNumber, 90);
         }
@@ -198,12 +198,12 @@ describe('grid template', function() {
     });
 
     it('should have 13778944 points in record 1', function() {
-        const field = msgs[0].fields[0];
+        var field = msgs[0].fields[0];
         assert.strictEqual(field.grid.definition.nx * field.grid.definition.ny, 13778944);
     });
 
     it('should have 5290000 points in record 2', function() {
-        const field = msgs[1].fields[0];
+        var field = msgs[1].fields[0];
         assert.strictEqual(field.grid.definition.nx * field.grid.definition.ny, 5290000);
     });
   });

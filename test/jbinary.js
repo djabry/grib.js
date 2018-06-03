@@ -1,9 +1,9 @@
-const assert = require('assert');
-const jBinary = require('jbinary');
-const files = require('./lib/fixtures').files;
+var assert = require('assert');
+var jBinary = require('jbinary');
+var files = require('./lib/fixtures').files;
 
 describe('jbinary', function() {
-    const typeSet = {'jBinary.endian': 'littleEndian', 'jBinary.all': 'string'};
+    var typeSet = {'jBinary.endian': 'littleEndian', 'jBinary.all': 'string'};
 
     it('should be present', function() {
     assert.ok(jBinary);
@@ -12,7 +12,7 @@ describe('jbinary', function() {
   it('should load fixture URLs with correct length', function(done) {
     jBinary.load(files['gfs.grb'].url, typeSet, function(err, data) {
       if(err) return done(err);
-        const all = data.readAll();
+        var all = data.readAll();
         assert.strictEqual(all.length, 3867577);
       done();
     });
@@ -21,7 +21,7 @@ describe('jbinary', function() {
   it('should load fixture URLs with correct endianness', function(done) {
     jBinary.load(files['gfs.grb'].url, typeSet, function(err, data) {
       if(err) return done(err);
-        const magic = data.read('uint32');
+        var magic = data.read('uint32');
         assert.strictEqual(magic, 0x47524942); // 'GRIB'
       done();
     });

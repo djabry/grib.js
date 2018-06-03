@@ -1,10 +1,10 @@
-const assert = require('assert');
-const grib = require('../index');
-const jBinary = require('jbinary');
-const files = require('./lib/fixtures').files;
+var assert = require('assert');
+var grib = require('../index');
+var jBinary = require('jbinary');
+var files = require('./lib/fixtures').files;
 
 describe('sample file gfs.grb', function() {
-    let msgs = null;
+    var msgs = null;
 
     beforeEach(function(done) {
     msgs = null;
@@ -21,8 +21,8 @@ describe('sample file gfs.grb', function() {
   it('should have 308 records', function() { assert.strictEqual(msgs.length, 308); });
 
   it('should have one or two fields per record', function() {
-      let msg;
-      for(const idx in msgs) {
+      var msg;
+      for(var idx in msgs) {
       msg = msgs[idx];
       assert.ok((msg.fields.length === 1) || (msg.fields.length === 2));
     }
