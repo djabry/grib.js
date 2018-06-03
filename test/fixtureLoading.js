@@ -67,5 +67,5 @@ const makeTests = function (fileName) {
 
 for(const fileName in files) {
     const fileSpec = files[fileName];
-    describe('parsing fixture ' + fileName, makeTests(fileName));
+    describe(`parsing fixture ${fileName}`, makeTests(fileName));
 }

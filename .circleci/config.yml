@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:latest-browsers
     steps:
       - checkout
       # Download and cache dependencies
@@ -26,7 +26,7 @@ jobs:
 
   publish:
       docker:
-        - image: circleci/node:10-browsers
+        - image: circleci/node:latest-browsers
       steps:
         - run: npm --version
         - checkout
